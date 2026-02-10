@@ -1,0 +1,80 @@
+# PRSpec Configuration
+# Ethereum Specification Compliance Checker
+
+# GitHub Repository URLs
+repositories:
+  execution_specs:
+    url: https://github.com/ethereum/execution-specs
+    branch: master
+    local_path: ./cache/execution-specs
+  
+  go_ethereum:
+    url: https://github.com/ethereum/go-ethereum
+    branch: master
+    local_path: ./cache/go-ethereum
+
+# EIP-1559 Specific Configuration
+eip1559:
+  spec:
+    # Path to EIP-1559 specification within execution-specs repo
+    markdown_path: network-upgrades/mainnet-upgrades/london.md
+    # Alternative: src/ethereum/london/spec.py
+  
+  code:
+    # Relevant Go files in go-ethereum
+    files:
+      - core/types/transaction.go
+      - core/types/eip1559.go
+      - core/forkid/forkid.go
+      - params/protocol_params.go
+      - params/config.go
+      - consensus/ethash/consensus.go
+    # Key functions to analyze
+    key_functions:
+      - CalcBaseFee
+      - EffectiveGasTip
+      - GasFeeCap
+      - GasTipCap
+      - validateEIP1559Fields
+
+# LLM Configuration
+llm:
+  default_model: gpt-4
+  fallback_model: gpt-3.5-turbo
+  max_tokens: 4000
+  temperature: 0.1
+  # Confidence threshold for compliance (0.0 - 1.0)
+  confidence_threshold: 0.7
+
+# Analysis Configuration
+analysis:
+  # Sections to compare between spec and code
+  sections:
+    - base_fee_calculation
+    - fee_burning
+    - gas_pricing
+    - transaction_validation
+    - block_validation
+  
+  # Output formats
+  output_formats:
+    - json
+    - markdown
+    - html
+  
+  # Cache settings
+  cache_enabled: true
+  cache_duration_hours: 24
+
+# Output Configuration
+output:
+  directory: ./output
+  report_filename: prspec_report
+  include_code_snippets: true
+  include_line_numbers: true
+  include_confidence_scores: true
+
+# Logging
+logging:
+  level: INFO
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
