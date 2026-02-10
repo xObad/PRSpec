@@ -21,7 +21,7 @@ PRSpec is an automated tool for checking Ethereum client implementations against
 
 ```bash
 # Clone the repository
-git clone https://github.com/safi-elhassanine/prspec.git
+git clone https://github.com/xObad/PRSpec.git
 cd prspec
 
 # Create virtual environment
@@ -129,7 +129,7 @@ repositories:
     url: https://github.com/ethereum/execution-specs
     branch: master
     local_path: ./cache/execution-specs
-  
+
   go_ethereum:
     url: https://github.com/ethereum/go-ethereum
     branch: master
@@ -158,31 +158,31 @@ from src.report_generator import ReportGenerator
 async def check_compliance():
     # Load configuration
     config = get_config()
-    
+
     # Fetch specification
     spec_fetcher = SpecFetcher(config)
     spec_content = spec_fetcher.extract_eip1559_spec()
-    
+
     # Fetch code
     code_fetcher = CodeFetcher(config)
     code_files = code_fetcher.get_eip1559_files()
-    
+
     # Parse
     spec_parser = SpecParser()
     parsed_spec = spec_parser.parse(spec_content, title="EIP-1559")
-    
+
     code_parser = CodeParser()
     first_file = list(code_files.values())[0]
     parsed_code = code_parser.parse(first_file)
-    
+
     # Analyze
     analyzer = LLMAnalyzer(config)
     result = await analyzer.analyze(parsed_spec, parsed_code)
-    
+
     # Generate report
     report_gen = ReportGenerator(config)
     report_gen.generate(result, formats=['json', 'markdown', 'html'])
-    
+
     print(f"Compliance: {result.overall_compliance.value}")
     print(f"Confidence: {result.overall_confidence:.1%}")
 
@@ -386,7 +386,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 **Safi El-Hassanine**
 
-- GitHub: [@safi-elhassanine](https://github.com/safi-elhassanine)
+- GitHub: [@xObad](https://github.com/xObad)
 
 ## Disclaimer
 
@@ -397,6 +397,3 @@ This tool uses LLMs for analysis and may produce incorrect results. Always verif
 <p align="center">
   Built with ❤️ for the Ethereum ecosystem
 </p>
-#   P R S p e c  
- #   P R S p e c  
- 
