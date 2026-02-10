@@ -1,7 +1,14 @@
 # PRSpec - Ethereum Specification Compliance Checker
 
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.8+](https://img.shields.io/badge/Python-3.8+-blue.svg?style=flat-square)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+<p align="left">
+  <img src="https://img.shields.io/badge/ESP-Program-627EEA?logo=ethereum&logoColor=white&style=flat-square" alt="ESP Program"/>
+  <img src="https://img.shields.io/badge/Status-Active-AAFF00?logo=ethereum&logoColor=white&style=flat-square" alt="Status Active"/>
+  <img src="https://img.shields.io/badge/Grant-Application-627EEA?logo=ethereum&logoColor=white&style=flat-square" alt="Grant Application"/>
+</p>
+
+
 
 PRSpec is an automated tool for checking Ethereum client implementations against official specifications. It uses Large Language Models (LLMs) to intelligently compare protocol specifications with code implementations, identifying compliance issues and providing actionable recommendations.
 
